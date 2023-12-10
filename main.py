@@ -5,11 +5,13 @@ def main()-> int:
     text_lower = text.lower()
     num_words = get_num_words(text_lower)
     num_char = get_num_char(text_lower)
-    sorted_char = sort_char(num_char)
+    sorted_char_list = sort_char(num_char)
+    print(f"--- Begin report of books/frankenstein.txt ---")
     print(f"{num_words} words in the document")
     print()
-    for i in sorted_char:
+    for i in sorted_char_list:
         print(f"The '{i[1]}' character was found {i[0]} times")
+    print(f"--- End report ---")
 
 # Function to read the text content of a book from a given file path.
 def get_book_text(book_path: str)-> str:
@@ -31,11 +33,9 @@ def get_num_char(text: str)-> dict:
             chars[char] = 1
     return chars
 
-# 
+# Function to count individual letters and remove non alphabetical ones.
 def sort_char(sorted: dict)-> list:
     cleaned_list = []
-    key = list(sorted.keys())
-    value = list(sorted.values())
     for key, value in sorted.items():
         if key.isalpha():
             cleaned_list.append((value, key))
