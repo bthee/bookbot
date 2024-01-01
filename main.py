@@ -19,14 +19,14 @@ def get_book_text(book_path: str)-> str:
         return f.read()
 
 # Function to count the number of words in a given text.
-def get_num_words(text: str)-> int:
-    words = text.split()
+def get_num_words(text_lower: str)-> int:
+    words = text_lower.split()
     return len(words)
 
 # Function to count the occurrences of each character in a given text.
-def get_num_char(text: str)-> dict:
+def get_num_char(text_lower: str)-> dict:
     chars = {}
-    for char in text:
+    for char in text_lower:
         if char in chars:
             chars[char] += 1
         else:
@@ -34,9 +34,9 @@ def get_num_char(text: str)-> dict:
     return chars
 
 # Function to count individual letters and remove non alphabetical ones.
-def sort_char(sorted: dict)-> list:
+def sort_char(sorted_char_list: dict)-> list:
     cleaned_list = []
-    for key, value in sorted.items():
+    for key, value in sorted_char_list.items():
         if key.isalpha():
             cleaned_list.append((value, key))
     cleaned_list.sort(reverse=True)
